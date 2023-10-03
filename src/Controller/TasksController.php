@@ -76,6 +76,6 @@ class TasksController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_tasks_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_to_d_o_index', [], Response::HTTP_SEE_OTHER);
     }
 }

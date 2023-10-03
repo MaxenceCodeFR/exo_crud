@@ -19,6 +19,7 @@ class ToDO
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'todo', targetEntity: Tasks::class)]
+    #[ORM\JoinColumn(onDelete: "CASCADE")]
     private Collection $tasks;
 
     public function __construct()
