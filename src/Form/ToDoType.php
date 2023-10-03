@@ -2,12 +2,14 @@
 
 namespace App\Form;
 
-use App\Entity\ToDo;
+use App\Entity\ToDO;
+use App\Form\TasksType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
-class ToDoType extends AbstractType
+class ToDOType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -18,7 +20,7 @@ class ToDoType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => ToDo::class,
+            'data_class' => ToDO::class,
         ]);
     }
 }

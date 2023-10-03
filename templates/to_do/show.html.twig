@@ -1,26 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ToDo{% endblock %}
+{% block title %}ToDO{% endblock %}
 
 {% block body %}
-    <h1>ToDo</h1>
+    <h1>ToDO</h1>
 
     <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ to_do.id }}</td>
+                <td>{{ to_d_o.id }}</td>
             </tr>
             <tr>
                 <th>Name</th>
-                <td>{{ to_do.name }}</td>
+                <td>{{ to_d_o.name }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_to_do_index') }}">back to list</a>
+    <a href="{{ path('app_to_d_o_index') }}">back to list</a>
 
-    <a href="{{ path('app_to_do_edit', {'id': to_do.id}) }}">edit</a>
+    <a href="{{ path('app_to_d_o_edit', {'id': to_d_o.id}) }}">edit</a>
 
     {{ include('to_do/_delete_form.html.twig') }}
 {% endblock %}

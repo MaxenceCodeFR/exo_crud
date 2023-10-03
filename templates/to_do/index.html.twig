@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ToDo index{% endblock %}
+{% block title %}ToDO index{% endblock %}
 
 {% block body %}
-    <h1>ToDo index</h1>
+    <h1>ToDO index</h1>
 
     <table class="table">
         <thead>
@@ -14,13 +14,15 @@
             </tr>
         </thead>
         <tbody>
-        {% for to_do in to_dos %}
+        {% for to_d_o in to_d_os %}
             <tr>
-                <td>{{ to_do.id }}</td>
-                <td>{{ to_do.name }}</td>
+                <td>{{ to_d_o.name }}</td>
+                {% for task in to_d_o.tasks %}
+                    <td>{{ task.name }}</td>
+                {% endfor %}
                 <td>
-                    <a href="{{ path('app_to_do_show', {'id': to_do.id}) }}">show</a>
-                    <a href="{{ path('app_to_do_edit', {'id': to_do.id}) }}">edit</a>
+                    <a href="{{ path('app_to_d_o_show', {'id': to_d_o.id}) }}">show</a>
+                    <a href="{{ path('app_to_d_o_edit', {'id': to_d_o.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +33,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_to_do_new') }}">Create new</a>
+    <a href="{{ path('app_to_d_o_new') }}">Create new</a>
 {% endblock %}

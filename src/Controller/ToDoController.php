@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\ToDo;
-use App\Form\ToDoType;
-use App\Repository\ToDoRepository;
+use App\Entity\ToDO;
+use App\Form\ToDOType;
+use App\Repository\ToDORepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,70 +12,70 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/')]
-class ToDoController extends AbstractController
+class ToDOController extends AbstractController
 {
-    #[Route('/', name: 'app_to_do_index', methods: ['GET'])]
-    public function index(ToDoRepository $toDoRepository): Response
+    #[Route('/', name: 'app_to_d_o_index', methods: ['GET'])]
+    public function index(ToDORepository $toDORepository): Response
     {
         return $this->render('to_do/index.html.twig', [
-            'to_dos' => $toDoRepository->findAll(),
+            'to_d_os' => $toDORepository->findAll(),
         ]);
     }
 
-    #[Route('/new', name: 'app_to_do_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'app_to_d_o_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $toDo = new ToDo();
-        $form = $this->createForm(ToDoType::class, $toDo);
+        $toDO = new ToDO();
+        $form = $this->createForm(ToDOType::class, $toDO);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($toDo);
+            $entityManager->persist($toDO);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_to_do_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_to_d_o_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('to_do/new.html.twig', [
-            'to_do' => $toDo,
+            'to_d_o' => $toDO,
             'form' => $form,
         ]);
     }
 
-    #[Route('/{id}', name: 'app_to_do_show', methods: ['GET'])]
-    public function show(ToDo $toDo): Response
+    #[Route('/{id}', name: 'app_to_d_o_show', methods: ['GET'])]
+    public function show(ToDO $toDO): Response
     {
         return $this->render('to_do/show.html.twig', [
-            'to_do' => $toDo,
+            'to_d_o' => $toDO,
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_to_do_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, ToDo $toDo, EntityManagerInterface $entityManager): Response
+    #[Route('/{id}/edit', name: 'app_to_d_o_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, ToDO $toDO, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(ToDoType::class, $toDo);
+        $form = $this->createForm(ToDOType::class, $toDO);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_to_do_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_to_d_o_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('to_do/edit.html.twig', [
-            'to_do' => $toDo,
+            'to_d_o' => $toDO,
             'form' => $form,
         ]);
     }
 
-    #[Route('/{id}', name: 'app_to_do_delete', methods: ['POST'])]
-    public function delete(Request $request, ToDo $toDo, EntityManagerInterface $entityManager): Response
+    #[Route('/{id}', name: 'app_to_d_o_delete', methods: ['POST'])]
+    public function delete(Request $request, ToDO $toDO, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $toDo->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($toDo);
+        if ($this->isCsrfTokenValid('delete' . $toDO->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($toDO);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_to_do_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_to_d_o_index', [], Response::HTTP_SEE_OTHER);
     }
 }

@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ToDoRepository;
+use App\Repository\ToDORepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ToDoRepository::class)]
-class ToDo
+#[ORM\Entity(repositoryClass: ToDORepository::class)]
+class ToDO
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -18,12 +18,17 @@ class ToDo
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\OneToMany(mappedBy: 'name', targetEntity: Tasks::class)]
+    #[ORM\OneToMany(mappedBy: 'todo', targetEntity: Tasks::class)]
     private Collection $tasks;
 
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -55,7 +60,7 @@ class ToDo
     {
         if (!$this->tasks->contains($task)) {
             $this->tasks->add($task);
-            $task->setName($this);
+            $task->setTodo($this);
         }
 
         return $this;
@@ -65,8 +70,8 @@ class ToDo
     {
         if ($this->tasks->removeElement($task)) {
             // set the owning side to null (unless already changed)
-            if ($task->getName() === $this) {
-                $task->setName(null);
+            if ($task->getTodo() === $this) {
+                $task->setTodo(null);
             }
         }
 

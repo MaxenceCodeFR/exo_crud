@@ -2,27 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\ToDo;
+use App\Entity\ToDO;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<ToDo>
+ * @extends ServiceEntityRepository<ToDO>
  *
- * @method ToDo|null find($id, $lockMode = null, $lockVersion = null)
- * @method ToDo|null findOneBy(array $criteria, array $orderBy = null)
- * @method ToDo[]    findAll()
- * @method ToDo[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ToDO|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ToDO|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ToDO[]    findAll()
+ * @method ToDO[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ToDoRepository extends ServiceEntityRepository
+class ToDORepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ToDo::class);
+        parent::__construct($registry, ToDO::class);
     }
 
 //    /**
-//     * @return ToDo[] Returns an array of ToDo objects
+//     * @return ToDO[] Returns an array of ToDO objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -36,7 +36,7 @@ class ToDoRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?ToDo
+//    public function findOneBySomeField($value): ?ToDO
 //    {
 //        return $this->createQueryBuilder('t')
 //            ->andWhere('t.exampleField = :val')

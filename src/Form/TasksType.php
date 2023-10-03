@@ -13,6 +13,7 @@ class TasksType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('todo')
         ;
     }
 
