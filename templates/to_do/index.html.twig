@@ -1,24 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ToDO index{% endblock %}
+{% block title %}Ma ToDo{% endblock %}
 
 {% block body %}
-    <h1>ToDO index</h1>
+    <h1>Ma Liste</h1>
 
     <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
         <tbody>
         {% for to_d_o in to_d_os %}
             <tr>
                 <td>{{ to_d_o.name }}</td>
                 {% for task in to_d_o.tasks %}
-                    <td>{{ task.name }}</td>
+                    <td>{{ task.name }},</td>
                 {% endfor %}
                 <td>
                     <a href="{{ path('app_to_d_o_show', {'id': to_d_o.id}) }}">show</a>

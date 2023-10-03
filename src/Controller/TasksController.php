@@ -33,7 +33,7 @@ class TasksController extends AbstractController
             $entityManager->persist($task);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_tasks_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_to_d_o_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('tasks/new.html.twig', [
@@ -71,7 +71,7 @@ class TasksController extends AbstractController
     #[Route('/{id}', name: 'app_tasks_delete', methods: ['POST'])]
     public function delete(Request $request, Tasks $task, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$task->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $task->getId(), $request->request->get('_token'))) {
             $entityManager->remove($task);
             $entityManager->flush();
         }
