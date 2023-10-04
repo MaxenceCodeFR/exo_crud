@@ -5,10 +5,19 @@ body {
 }
 
 .divtask {
-    background-color: aqua;
+
+    width: 50%;
+
+}
+
+.divtask>div {
+    display: flex;
 }
 
 button {
-    width: 100px;
+    width: 20px;
     background: none;
+    border: none;
+    height: auto;
+    padding: 0px;
 }
