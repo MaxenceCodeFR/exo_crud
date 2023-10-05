@@ -16,7 +16,7 @@
 
                 {% for task in to_d_o.tasks %}
                 <div class=" divtask ">
-                    <div>{{ task.name }} {{ include('tasks/_delete_form.html.twig') }}</div>
+                    <div>{{ task.name }} {{ include('tasks/_delete_form.html.twig') }},</div>
                 </div>
                 {% endfor %}
                     <a href="{{ path('app_tasks_new', {id:to_d_o.id}) }}">Ajouter une tâche</a>
